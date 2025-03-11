@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "name": "Etymonline",
+  "description": "Select a word to look up its etymology on Etymonline seamlessly.",
+  "author": "Nhân Trí",
+  "homepage_url": "https://github.com/nhantrichuyenanh/etymonline",
+  "content_security_policy": "default-src 'self'; script-src 'self'; object-src 'self'",
+  "icons": {
+    "128": "icon.png"
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Etymonline Lookup"
+  },
+  "background": {
+    "scripts": ["script.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://etymonline.com/word*"],
+      "js": ["ad_remover.js"]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "contextMenus"
+  ]
+}
