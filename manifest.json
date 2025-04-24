@@ -1,6 +1,6 @@
 {
-  "manifest_version": 2,
-  "version": "1.0.0",
+  "manifest_version": 3,
+  "version": "1.0.1",
   "name": "Etymonline",
   "description": "Select a word to look up its etymology on Etymonline seamlessly.",
   "author": "Nhân Trí",
@@ -25,5 +25,11 @@
   "permissions": [
     "activeTab",
     "contextMenus"
-  ]
+  ],
+  "browser_specific_settings": {
+  "gecko": {
+    "id": "{2dba1704-2c21-4580-98d5-fa7fb92ab6d9}",
+    "strict_min_version": "109.0"
+    }
+  }
 }
