@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Popup Window Options</title>
+    <style>
+        /* LIGHT MODE */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #fff;
+            color: #15141a;
+        }
+
+        .container {
+            width: 320px;
+            padding: 20px;
+            background: #f9f9f9;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .form-group.window-size .label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .label-row label {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .size-display {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 4px;
+            margin: 0;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #0060df;
+            cursor: pointer;
+            margin-top: -4px;
+        }
+
+        .ratio-inputs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 8px;
+        }
+
+        .ratio-inputs input {
+            width: 35px;
+            aspect-ratio: 1 / 1;
+            font-size: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            background: #fff;
+            color: #15141a;
+            text-align: center;
+            padding: 0;
+        }
+
+        .ratio-separator {
+            font-size: 1.1rem;
+            align-self: center;
+        }
+
+        .info {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: #444;
+            line-height: 1.4;
+            text-align: left;
+            background: rgba(0, 96, 223, 0.05);
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* DARK MODE */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #23222b;
+                color: #fbfbfe;
+            }
+
+            .container {
+                background: #1c1b22;
+                border: 1px solid #4e4d54;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            }
+
+            .size-display {
+                color: #cfcfd4;
+            }
+
+            input[type="range"] {
+                background: #4e4d54;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                background: #00ddff;
+            }
+
+            .ratio-inputs input {
+                background: #23222b;
+                border: 1px solid #4e4d54;
+                color: #fbfbfe;
+            }
+
+            .info {
+                background: rgba(0, 96, 223, 0.2);
+                color: #cfcfd4;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Popup Window Settings</h1>
+
+        <!-- Window Size -->
+        <div class="form-group window-size">
+            <div class="label-row">
+                <label for="windowSize">Window Size (% of screen)</label>
+                <div class="size-display" id="sizeDisplay">50%</div>
+            </div>
+            <input type="range" id="windowSize" min="0" max="100" value="50">
+        </div>
+
+        <!-- Aspect Ratio -->
+        <div class="form-group">
+            <label>Aspect Ratio (Width : Height)</label>
+            <div class="ratio-inputs">
+                <input type="number" id="aspectWidth" min="1" step="1" value="4">
+                <span class="ratio-separator">:</span>
+                <input type="number" id="aspectHeight" min="1" step="1" value="3">
+            </div>
+        </div>
+
+        <div class="info">
+            Changes apply immediately. Popup window's size and aspect ratio are calculated via your screen, and the latter will be a square if both width and height are set to the same integer.
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+
+</html>
