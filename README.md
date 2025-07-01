@@ -1,4 +1,4 @@
-# Etymonline Browser Extension
+# Etymonline Lookup
 
 Features:
 - Right-click Lookup: Highlight any word, right-click, and select "Etymonline: [word]" to instantly open its etymology page in a popup window.
