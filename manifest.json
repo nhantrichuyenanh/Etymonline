@@ -8,11 +8,7 @@
   "icons": {
     "128": "icon.png"
   },
-  "background": {
-    "scripts": [
-      "script.js"
-    ]
-  },
+  "background": {"scripts": ["script.js"]},
   "content_scripts": [
     {
       "matches": ["https://etymonline.com/word*"],
