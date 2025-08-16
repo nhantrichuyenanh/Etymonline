@@ -12,7 +12,8 @@
   "content_scripts": [
     {
       "matches": ["https://etymonline.com/word*"],
-      "js": ["ad_remover.js"]
+      "js": ["ad_remover.js"],
+      "run_at": "document_idle"
     }
   ],
   "options_ui": {
