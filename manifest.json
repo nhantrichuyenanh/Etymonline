@@ -9,7 +9,6 @@
     "128": "icon.png"
   },
   "background": {"scripts": ["script.js"]},
-  ],
   "options_ui": {
     "page": "options/options.html",
     "open_in_tab": false
