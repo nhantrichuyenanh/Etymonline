@@ -1,14 +1,19 @@
 {
-  "manifest_version": 2,
-  "version": "1.0.2",
+  "manifest_version": 3,
+  "version": "1.0.3",
   "name": "Etymonline",
   "description": "Select a word to look up its etymology on Etymonline seamlessly.",
   "author": "Nhân Trí",
   "homepage_url": "https://github.com/nhantrichuyenanh/Etymonline",
   "icons": {
-    "128": "icon.png"
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "64": "icon.png",
+    "128": "icon.png",
+    "256": "icon.png"
   },
-  "background": {"scripts": ["script.js"]},
+  "background": {"scripts": ["background.js"]},
   "options_ui": {
     "page": "options/options.html",
     "open_in_tab": false
