@@ -9,12 +9,6 @@
     "128": "icon.png"
   },
   "background": {"scripts": ["script.js"]},
-  "content_scripts": [
-    {
-      "matches": ["https://etymonline.com/word*"],
-      "js": ["ad_remover.js"],
-      "run_at": "document_idle"
-    }
   ],
   "options_ui": {
     "page": "options/options.html",
