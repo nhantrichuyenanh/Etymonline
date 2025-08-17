@@ -8,18 +8,11 @@
   "icons": {
     "128": "icon.png"
   },
-  "background": {"scripts": ["script.js"]},
-  "content_scripts": [
-    {
-      "matches": ["https://etymonline.com/word*"],
-      "js": ["script.js"],
-      "run_at": "document_idle"
-    }
-  ],
-  "options_ui": {
-    "page": "options/options.html",
-    "open_in_tab": false
-  },
+  "background": {"scripts": ["script.js"]},
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
   "permissions": [
     "activeTab",
     "contextMenus",
