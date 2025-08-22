@@ -6,18 +6,19 @@ browser.contextMenus.create({
     if (info) {
       const selectedText = info.selectionText;
       const etymonlineURL = `https://etymonline.com/word/${selectedText}`;
-      lookupSelection(selectedText, etymonlineURL);
+      lookupSelection(selectedText, etymonlineURL, tab);
     }
   }
 });
 
 // get user preferences from storage with defaults
-async function getWindowSettings() {
+async function getUserSettings() {
   try {
     const result = await browser.storage.sync.get({
       windowSize: 50,
       aspectRatioWidth: 4,
-      aspectRatioHeight: 3
+      aspectRatioHeight: 3,
+      openMode: 'window'
     });
     return result;
   } catch (error) {
@@ -25,14 +26,15 @@ async function getWindowSettings() {
     return {
       windowSize: 50,
       aspectRatioWidth: 4,
-      aspectRatioHeight: 3
+      aspectRatioHeight: 3,
+      openMode: 'window'
     };
   }
 }
 
 // calculate window dimensions based on user settings
 async function calculateWindowDimensions() {
-  const settings = await getWindowSettings();
+  const settings = await getUserSettings();
   const sizeRatio = settings.windowSize / 100;
 
   // use available screen size for sizing
@@ -70,14 +72,27 @@ async function onCreated(windowInfo) {
   }
 }
 
-// popup window to look up the selected word
-function lookupSelection(text, url) {
+// lookup the selected word based on user preferences
+async function lookupSelection(text, url, currentTab) {
   if (text) {
-    browser.windows.create({
-      url: url,
-      type: "popup"
-    }).then(onCreated).catch(error => {
-      console.error(`Error creating window: ${error}`);
-    });
+    const settings = await getUserSettings();
+
+    if (settings.openMode === 'tab') {
+      // open in new tab
+      browser.tabs.create({
+        url: url,
+        active: true
+      }).catch(error => {
+        console.error(`Error creating tab: ${error}`);
+      });
+    } else {
+      // open in popup window (default behavior)
+      browser.windows.create({
+        url: url,
+        type: "popup"
+      }).then(onCreated).catch(error => {
+        console.error(`Error creating window: ${error}`);
+      });
+    }
   }
 }

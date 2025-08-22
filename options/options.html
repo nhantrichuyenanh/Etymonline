@@ -88,6 +88,48 @@
             align-self: center;
         }
 
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            height: 42px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .radio-option:hover {
+            background: color-mix(in srgb, AccentColor 10%, transparent);
+        }
+
+        .radio-option input[type="radio"] {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .window-settings {
+            transition: opacity 0.3s, height 0.3s;
+        }
+
+        .window-settings.hidden {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
         .info {
             font-size: 0.85rem;
             text-align: center;
@@ -124,6 +166,10 @@
                 color: #fbfbfe;
             }
 
+            .radio-option:hover {
+                background: color-mix(in srgb, AccentColor 10%, transparent);
+            }
+
             .info {
                 color: #bbb;
             }
@@ -134,22 +180,39 @@
 <body>
     <div class="container">
 
-        <!-- Window Size -->
-        <div class="card">
-            <div class="label-row">
-                <label for="windowSize">Window Size (% of screen)</label>
-                <div class="size-display" id="sizeDisplay">50%</div>
+        <!-- Open Mode Selection -->
+        <div class="card" style="padding: 0px 16px;">
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="modeWindow" name="openMode" value="window" checked>
+                    <label for="modeWindow">Window</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="modeTab" name="openMode" value="tab">
+                    <label for="modeTab">Tab</label>
+                </div>
             </div>
-            <input type="range" id="windowSize" min="0" max="100" value="50">
         </div>
 
-        <!-- Aspect Ratio -->
-        <div class="card">
-            <label>Aspect Ratio (Width : Height)</label>
-            <div class="ratio-inputs">
-                <input type="number" id="aspectWidth" min="1" step="1" value="4">
-                <span class="ratio-separator">:</span>
-                <input type="number" id="aspectHeight" min="1" step="1" value="3">
+        <!-- Window Settings (shown only when Window mode is selected) -->
+        <div class="window-settings" id="windowSettings">
+            <!-- Window Size -->
+            <div class="card">
+                <div class="label-row">
+                    <label for="windowSize">Window Size (% of screen)</label>
+                    <div class="size-display" id="sizeDisplay">50%</div>
+                </div>
+                <input type="range" id="windowSize" min="0" max="100" value="50">
+            </div>
+
+            <!-- Aspect Ratio -->
+            <div class="card">
+                <label>Aspect Ratio (Width : Height)</label>
+                <div class="ratio-inputs">
+                    <input type="number" id="aspectWidth" min="1" step="1" value="4">
+                    <span class="ratio-separator">:</span>
+                    <input type="number" id="aspectHeight" min="1" step="1" value="3">
+                </div>
             </div>
         </div>
 
@@ -161,4 +224,5 @@
 
     <script src="options.js"></script>
 </body>
+
 </html>

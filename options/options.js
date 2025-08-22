@@ -3,7 +3,9 @@ const windowSizeSlider = document.getElementById('windowSize');
 const sizeDisplay = document.getElementById('sizeDisplay');
 const aspectWidthInput = document.getElementById('aspectWidth');
 const aspectHeightInput = document.getElementById('aspectHeight');
-const saveIndicator = document.getElementById('saveIndicator');
+const modeWindowRadio = document.getElementById('modeWindow');
+const modeTabRadio = document.getElementById('modeTab');
+const windowSettings = document.getElementById('windowSettings');
 
 // load saved settings when page loads
 document.addEventListener('DOMContentLoaded', loadSettings);
@@ -12,6 +14,8 @@ document.addEventListener('DOMContentLoaded', loadSettings);
 windowSizeSlider.addEventListener('input', handleSizeChange);
 aspectWidthInput.addEventListener('input', handleRatioChange);
 aspectHeightInput.addEventListener('input', handleRatioChange);
+modeWindowRadio.addEventListener('change', handleModeChange);
+modeTabRadio.addEventListener('change', handleModeChange);
 
 // load settings from storage and populate form
 async function loadSettings() {
@@ -19,15 +23,44 @@ async function loadSettings() {
         const settings = await browser.storage.sync.get({
             windowSize: 50,
             aspectRatioWidth: 4,
-            aspectRatioHeight: 3
+            aspectRatioHeight: 3,
+            openMode: 'window'
         });
-        
+
         windowSizeSlider.value = settings.windowSize;
         sizeDisplay.textContent = settings.windowSize + '%';
         aspectWidthInput.value = settings.aspectRatioWidth;
         aspectHeightInput.value = settings.aspectRatioHeight;
+
+        // set radio button selection
+        if (settings.openMode === 'tab') {
+            modeTabRadio.checked = true;
+            modeWindowRadio.checked = false;
+        } else {
+            modeWindowRadio.checked = true;
+            modeTabRadio.checked = false;
+        }
+
+        // update UI visibility based on mode
+        updateWindowSettingsVisibility(settings.openMode);
     } catch (error) {
         console.error('Error loading settings:', error);
+    }
+}
+
+// handle open mode changes
+function handleModeChange() {
+    const selectedMode = modeWindowRadio.checked ? 'window' : 'tab';
+    updateWindowSettingsVisibility(selectedMode);
+    saveSettings();
+}
+
+// update visibility of window settings based on selected mode
+function updateWindowSettingsVisibility(mode) {
+    if (mode === 'window') {
+        windowSettings.classList.remove('hidden');
+    } else {
+        windowSettings.classList.add('hidden');
     }
 }
 
@@ -43,34 +76,28 @@ function handleRatioChange() {
     // validate inputs to ensure they are positive numbers
     const width = Math.max(0.1, parseFloat(aspectWidthInput.value) || 1);
     const height = Math.max(0.1, parseFloat(aspectHeightInput.value) || 1);
-    
+
     // update the inputs with validated values
     aspectWidthInput.value = width;
     aspectHeightInput.value = height;
-    
+
     saveSettings();
 }
 
 // save all current settings to storage
 async function saveSettings() {
     try {
+        const selectedMode = modeWindowRadio.checked ? 'window' : 'tab';
+
         const settings = {
             windowSize: parseInt(windowSizeSlider.value),
             aspectRatioWidth: parseFloat(aspectWidthInput.value),
-            aspectRatioHeight: parseFloat(aspectHeightInput.value)
+            aspectRatioHeight: parseFloat(aspectHeightInput.value),
+            openMode: selectedMode
         };
-        
+
         await browser.storage.sync.set(settings);
-        showSaveIndicator();
     } catch (error) {
         console.error('Error saving settings:', error);
     }
-}
-
-// show save confirmation message
-function showSaveIndicator() {
-    saveIndicator.classList.add('show');
-    setTimeout(() => {
-        saveIndicator.classList.remove('show');
-    }, 2000);
 }
