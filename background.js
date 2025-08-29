@@ -24,8 +24,8 @@ async function getUserSettings() {
   } catch (error) {
     return {
       windowSize: 50,
-      aspectRatioWidth: 4,
-      aspectRatioHeight: 3,
+      aspectRatioWidth: 1,
+      aspectRatioHeight: 1,
       openMode: 'window'
     };
   }
