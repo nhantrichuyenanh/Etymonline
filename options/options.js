@@ -22,8 +22,8 @@ async function loadSettings() {
     try {
         const settings = await browser.storage.sync.get({
             windowSize: 50,
-            aspectRatioWidth: 4,
-            aspectRatioHeight: 3,
+            aspectRatioWidth: 1,
+            aspectRatioHeight: 1,
             openMode: 'window'
         });
 
@@ -44,7 +44,6 @@ async function loadSettings() {
         // update UI visibility based on mode
         updateWindowSettingsVisibility(settings.openMode);
     } catch (error) {
-        console.error('Error loading settings:', error);
     }
 }
 
@@ -98,6 +97,5 @@ async function saveSettings() {
 
         await browser.storage.sync.set(settings);
     } catch (error) {
-        console.error('Error saving settings:', error);
     }
 }
