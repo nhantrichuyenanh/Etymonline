@@ -19,7 +19,6 @@
     "open_in_tab": false
   },
   "permissions": [
-    "activeTab",
     "contextMenus",
     "storage"
   ],
