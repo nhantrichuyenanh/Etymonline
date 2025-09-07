@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "name": "Etymonline",
-  "description": "Select a word to look up its etymology on Etymonline seamlessly.",
+  "description": "Select a word, right click, and choose Etymonline from context menu to look up its etymology seamlessly.",
   "author": "Nhân Trí",
   "homepage_url": "https://github.com/nhantrichuyenanh/Etymonline",
   "icons": {
