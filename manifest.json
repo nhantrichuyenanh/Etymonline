@@ -26,7 +26,8 @@
     "search_provider": {
       "name": "Etymonline",
       "search_url": "https://www.etymonline.com/search?q={searchTerms}",
-      "keyword": "ety",
+      "keyword": "@etymonline",
+      "favicon_url": "icon.png",
       "is_default": false
     }
   },
