@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "1.0.8",
+  "version": "1.0.9",
   "name": "Etymonline",
   "description": "Select a word, right click, and choose Etymonline from context menu to look up its etymology seamlessly.",
   "author": "Nhân Trí",
@@ -22,6 +22,14 @@
     "contextMenus",
     "storage"
   ],
+  "chrome_settings_overrides": {
+    "search_provider": {
+      "name": "Etymonline",
+      "search_url": "https://www.etymonline.com/search?q={searchTerms}",
+      "keyword": "ety",
+      "is_default": false
+    }
+  },
   "browser_specific_settings": {
     "gecko": {
       "id": "{2dba1704-2c21-4580-98d5-fa7fb92ab6d9}",
