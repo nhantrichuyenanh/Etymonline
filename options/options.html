@@ -2,196 +2,194 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Popup Window Options</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: #fff;
-            color: #15141a;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Popup Window Options</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #fff;
+            color: #15141a;
+        }
 
-        .container {
-            width: 340px;
-            margin: 0 auto;
-        }
+        .container {
+            width: 340px;
+            margin: 0 auto;
+        }
 
-        .card {
-            background: #f7f7f9;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-        }
+        .card {
+            background: #f7f7f9;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
 
-        .card label {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-            display: block;
-        }
+        .card label {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+        }
 
-        .label-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-        input[type="range"] {
-            width: 100%;
-            height: 6px;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
 
-        .ratio-inputs {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 10px;
-        }
+        .ratio-inputs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-        .ratio-inputs input {
-            width: 48px;
-            height: 42px;
-            font-size: 1rem;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            background: #fff;
-            color: #15141a;
-            text-align: center;
-        }
+        .ratio-inputs input {
+            width: 48px;
+            height: 42px;
+            font-size: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background: #fff;
+            color: #15141a;
+            text-align: center;
+        }
 
-        .ratio-separator {
-            font-size: 1.2rem;
-            align-self: center;
-        }
+        .ratio-separator {
+            font-size: 1.2rem;
+            align-self: center;
+        }
 
-        .radio-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            align-items: center;
-            height: 42px;
-        }
+        .radio-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            height: 42px;
+        }
 
-        .radio-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: background-color 0.2s;
-        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
 
-        .radio-option:hover {
-            background: color-mix(in srgb, AccentColor 10%, transparent);
-        }
+        .radio-option:hover {
+            background: color-mix(in srgb, AccentColor 10%, transparent);
+        }
 
-        .radio-option input[type="radio"] {
-            margin: 0;
-            cursor: pointer;
-        }
+        .radio-option input[type="radio"] {
+            margin: 0;
+            cursor: pointer;
+        }
 
-        .radio-option label {
-            margin: 0;
-            cursor: pointer;
-            font-weight: normal;
-        }
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: normal;
+        }
 
-        .window-settings {
-            transition: opacity 0.3s, height 0.3s;
-        }
+        .window-settings {
+            transition: opacity 0.3s, height 0.3s;
+        }
 
-        .window-settings.hidden {
-            opacity: 0.5;
-            pointer-events: none;
-        }
+        .window-settings.hidden {
+            opacity: 0.5;
+            pointer-events: none;
+        }
 
-        .info {
-            font-size: 0.85rem;
-            text-align: center;
-            padding: 12px;
-        }
+        .info {
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 12px;
+        }
 
-        /* DARK MODE */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #1c1b22;
-                color: #fbfbfe;
-            }
+        /* DARK MODE */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1c1b22;
+                color: #fbfbfe;
+            }
 
-            .card {
-                background: #2a2933;
-                border: 1px solid #444;
-            }
+            .card {
+                background: #2a2933;
+                border: 1px solid #444;
+            }
 
-            .ratio-inputs input {
-                background: #1c1b22;
-                border: 1px solid #555;
-                color: #fbfbfe;
-            }
+            .ratio-inputs input {
+                background: #1c1b22;
+                border: 1px solid #555;
+                color: #fbfbfe;
+            }
 
-            .radio-option:hover {
-                background: color-mix(in srgb, AccentColor 10%, transparent);
-            }
-        }
-    </style>
+            .radio-option:hover {
+                background: color-mix(in srgb, AccentColor 10%, transparent);
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container">
 
-        <!-- Open Mode Selection -->
-        <div class="card" style="padding: 0px 16px;">
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input type="radio" id="modeWindow" name="openMode" value="window" checked>
-                    <label for="modeWindow">Window</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" id="modeTab" name="openMode" value="tab">
-                    <label for="modeTab">Tab</label>
-                </div>
-            </div>
-        </div>
+        <!-- Open Mode Selection -->
+        <div class="card" style="padding: 0px 16px;">
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="modeWindow" name="openMode" value="window" checked>
+                    <label for="modeWindow">Window</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="modeTab" name="openMode" value="tab">
+                    <label for="modeTab">Tab</label>
+                </div>
+            </div>
+        </div>
 
-        <!-- Window Settings (shown only when Window mode is selected) -->
-        <div class="window-settings" id="windowSettings">
-            <!-- Window Size -->
-            <div class="card" style="padding-top: 8px;">
-                <div class="label-row">
-                    <label for="windowSize">Window Size (% of screen)</label>
-                    <div class="info" id="sizeDisplay">50%</div>
-                </div>
-                <input type="range" id="windowSize" min="0" max="100" value="50">
-            </div>
+        <!-- Window Settings (shown only when Window mode is selected) -->
+        <div class="window-settings" id="windowSettings">
+            <!-- Window Size -->
+            <div class="card" style="padding-top: 8px;">
+                <div class="label-row">
+                    <label for="windowSize">Window Size (% of screen)</label>
+                    <div class="info" id="sizeDisplay">50%</div>
+                </div>
+                <input type="range" id="windowSize" min="0" max="100" value="50">
+            </div>
 
-            <!-- Aspect Ratio -->
-            <div class="card">
-                <label>Aspect Ratio (Width : Height)</label>
-                <div class="ratio-inputs">
-                    <input type="number" id="aspectWidth" min="1" step="1" value="1">
-                    <span class="ratio-separator">:</span>
-                    <input type="number" id="aspectHeight" min="1" step="1" value="1">
-                </div>
-            </div>
-        </div>
+            <!-- Aspect Ratio -->
+            <div class="card">
+                <label>Aspect Ratio (Width : Height)</label>
+                <div class="ratio-inputs">
+                    <input type="number" id="aspectWidth" min="1" step="1" value="1">
+                    <span class="ratio-separator">:</span>
+                    <input type="number" id="aspectHeight" min="1" step="1" value="1">
+                </div>
+            </div>
+        </div>
 
-        <!-- Info -->
-        <div class="card info">
-            Changes apply immediately.
-        </div>
-    </div>
+        <!-- Info -->
+        <div class="card info">
+            Changes apply immediately.
+        </div>
+    </div>
 
-    <script src="options.js"></script>
+    <script src="options.js"></script>
 </body>
 
 </html>
-
-
