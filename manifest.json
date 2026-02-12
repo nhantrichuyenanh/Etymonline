@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "version": "1.0.9",
+  "version": "1.1.0",
   "name": "Etymonline",
   "description": "Select a word, right click, and choose Etymonline from context menu to look up its etymology seamlessly.",
   "author": "Nhân Trí",
@@ -34,7 +34,8 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "{2dba1704-2c21-4580-98d5-fa7fb92ab6d9}",
-      "strict_min_version": "109.0"
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {"required": ["none"]}
     }
   }
 }
